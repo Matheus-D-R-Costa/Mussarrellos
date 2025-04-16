@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Pedido - Mussarellos</title>
+    <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="icon" href="https://em-content.zobj.net/thumbs/240/apple/325/pizza_1f355.png" type="image/png">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <h1>Mussarellos</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Cardápio</a></li>
+                <li><a href="pedido.html" class="active">Carrinho</a></li>
+                <li><a href="login.html">Entrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="cart-container">
+            <h2>Seu Pedido</h2>
+
+            <div class="cart-items">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Pizza</th>
+                            <th>Tamanho</th>
+                            <th>Quantidade</th>
+                            <th>Preço</th>
+                            <th>Subtotal</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Margherita</td>
+                            <td>Média</td>
+                            <td>
+                                <div class="quantity-controls">
+                                    <button class="qty-btn">-</button>
+                                    <span>1</span>
+                                    <button class="qty-btn">+</button>
+                                </div>
+                            </td>
+                            <td>R$ 45,90</td>
+                            <td>R$ 45,90</td>
+                            <td><button class="remove-btn">🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>Pepperoni</td>
+                            <td>Grande</td>
+                            <td>
+                                <div class="quantity-controls">
+                                    <button class="qty-btn">-</button>
+                                    <span>2</span>
+                                    <button class="qty-btn">+</button>
+                                </div>
+                            </td>
+                            <td>R$ 49,90</td>
+                            <td>R$ 99,80</td>
+                            <td><button class="remove-btn">🗑️</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="order-summary">
+                <h3>Resumo do Pedido</h3>
+                <div class="summary-item">
+                    <span>Subtotal:</span>
+                    <span>R$ 145,70</span>
+                </div>
+                <div class="summary-item">
+                    <span>Frete:</span>
+                    <span>R$ 5,00</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Total:</span>
+                    <span>R$ 150,70</span>
+                </div>
+                <button class="checkout-btn">Finalizar Pedido</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contato</h3>
+                <p>📞 (11) 99999-9999</p>
+                <p>📧 contato@mussarellos.com</p>
+                <p>📍 Rua das Pizzas, 123 - São Paulo, SP</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
