@@ -1,0 +1,25 @@
+spring:
+  config:
+    import: "optional:file:../../../../.env[.properties]"
+  application:
+    name: backend
+  r2dbc:
+    url: r2dbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  data:
+    r2dbc:
+      repositories:
+        enabled: true
+
+server:
+  port: ${BACKEND_PORT}
+  http2:
+    enabled: true
+
+logging:
+  level:
+    com.mussarrellos: trace
+    root: info
+    org.springframework.web: debug
+    org.hibernate: info
