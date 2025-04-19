@@ -1,3 +1,41 @@
 .env
 .vagrant
 data/database
+
+/data/backend/HELP.md
+/data/backend/.gradle
+/data/backend/build
+/data/backend/gradle/wrapper/gradle-wrapper.jar
+/data/backend/src/main/build
+/data/backend/src/test/build
+
+### STS ###
+/data/backend/.apt_generated
+/data/backend/.classpath
+/data/backend/.factorypath
+/data/backend/.project
+/data/backend/.settings
+/data/backend/.springBeans
+/data/backend/.sts4-cache
+/data/backend/bin
+/data/backend/src/main/bin
+/data/backend/src/test/bin
+
+### IntelliJ IDEA ###
+/data/backend/.idea
+/data/backend/*.iws
+/data/backend/*.iml
+/data/backend/*.ipr
+/data/backend/out
+/data/backend/src/main/out
+/data/backend/src/test/out
+
+### NetBeans ###
+/data/backend/nbproject/private
+/data/backend/nbbuild
+/data/backend/dist
+/data/backend/nbdist
+/data/backend/.nb-gradle
+
+### VS Code ###
+/data/backend/.vscode
