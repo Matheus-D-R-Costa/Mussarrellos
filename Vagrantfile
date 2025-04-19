@@ -1,11 +1,14 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "rockylinux/8"
   config.vm.box_version = ">= 0"
+  
+  # Aumentar o timeout de boot para 10 minutos
+  config.vm.boot_timeout = 600
 
   config.vm.define "rocky8" do |rocky8|
     rocky8.vm.host_name = "rocky8"
     rocky8.vm.network "private_network", ip: "192.168.56.10"
-    rocky8.vm.synced_folder "./data", "/root/data"
+    rocky8.vm.synced_folder "./data", "/opt/mussarellos", SharedFoldersEnableSymlinksCreate: false
 
     rocky8.vm.provider "virtualbox" do |vb|
       vb.name = "rocky8"
