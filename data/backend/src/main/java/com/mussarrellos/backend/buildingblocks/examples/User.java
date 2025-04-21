@@ -1,7 +1,7 @@
 package com.mussarrellos.backend.buildingblocks.examples;
 
 import com.mussarrellos.backend.buildingblocks.Entity;
-import com.mussarrellos.backend.modules.user.domain.events.ClientCreatedDomainEvent;
+import com.mussarrellos.backend.modules.client.domain.events.ClientCreatedDomainEvent;
 
 /**
  * Exemplo de entidade que usa um ID tipado.

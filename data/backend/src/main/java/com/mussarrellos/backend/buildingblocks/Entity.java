@@ -5,23 +5,27 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Classe base para todas as entidades de domínio.
- * Fornece funcionalidades para gerenciamento de eventos de domínio e validação de regras de negócio.
+ * Classe base abstrata para todas as entidades de domínio.
+ * Fornece implementação para gerenciamento de eventos de domínio e verificação de regras de negócio.
+ * 
+ * @param <TId> O tipo do identificador da entidade
  */
-public abstract class Entity {
+public abstract class Entity<TId> implements IEntity {
     private List<IDomainEvent> domainEvents;
 
     /**
-     * Eventos de domínio ocorridos nesta entidade.
-     * @return Uma coleção imutável de eventos de domínio.
+     * Obtém o identificador único desta entidade.
+     * 
+     * @return O identificador da entidade
      */
+    protected abstract TId getId();
+
+    @Override
     public List<IDomainEvent> getDomainEvents() {
         return domainEvents == null ? Collections.emptyList() : Collections.unmodifiableList(domainEvents);
     }
 
-    /**
-     * Limpa todos os eventos de domínio registrados.
-     */
+    @Override
     public void clearDomainEvents() {
         if (domainEvents != null) {
             domainEvents.clear();
@@ -29,8 +33,9 @@ public abstract class Entity {
     }
 
     /**
-     * Adiciona um evento de domínio.
-     * @param domainEvent Evento de domínio a ser adicionado.
+     * Adiciona um evento de domínio à lista de eventos pendentes.
+     * 
+     * @param domainEvent O evento de domínio a ser adicionado
      */
     protected void addDomainEvent(IDomainEvent domainEvent) {
         if (domainEvents == null) {
@@ -41,9 +46,10 @@ public abstract class Entity {
     }
 
     /**
-     * Verifica se uma regra de negócio é violada.
-     * @param rule Regra de negócio a ser verificada.
-     * @throws BusinessRuleValidationException Se a regra for violada.
+     * Verifica uma regra de negócio e lança exceção se a regra for violada.
+     * 
+     * @param rule A regra de negócio a ser verificada
+     * @throws BusinessRuleValidationException Se a regra for violada
      */
     protected void checkRule(IBusinessRule rule) {
         if (rule.isBroken()) {
