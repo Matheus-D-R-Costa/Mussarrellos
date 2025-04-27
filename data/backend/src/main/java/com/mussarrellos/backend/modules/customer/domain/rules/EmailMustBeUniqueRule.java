@@ -1,18 +1,15 @@
-package com.mussarrellos.backend.modules.client.domain.rules;
+package com.mussarrellos.backend.modules.customer.domain.rules;
 
-import com.mussarrellos.backend.buildingblocks.IBusinessRule;
+import com.mussarrellos.backend.buildingblocks.domain.rules.IBusinessRule;
 
-import com.mussarrellos.backend.modules.client.domain.entity.Client;
+import com.mussarrellos.backend.modules.customer.domain.entities.Customer;
 import lombok.RequiredArgsConstructor;
 
-/**
- * Regra de negócio que verifica se um email é único.
- */
 @RequiredArgsConstructor
 public class EmailMustBeUniqueRule implements IBusinessRule {
 
     private final String email;
-    private final Client.EmailUniquenessChecker checker;
+    private final Customer.EmailUniquenessChecker checker;
 
     @Override
     public boolean isBroken() {

@@ -8,7 +8,7 @@ public record AuthenticateClientRequest(@NotBlank(message = "O novo email é obr
                                     String email,
 
                                         @NotBlank
-                                    String password, // Senha do usuário cryptographic
+                                    String password, // Senha do usuário criptografada no cliente
 
                                         @NotBlank
                                     String inst,

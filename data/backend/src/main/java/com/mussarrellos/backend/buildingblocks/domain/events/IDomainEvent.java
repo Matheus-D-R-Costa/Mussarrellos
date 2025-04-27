@@ -1,4 +1,4 @@
-package com.mussarrellos.backend.buildingblocks.domain;
+package com.mussarrellos.backend.buildingblocks.domain.events;
 
 import java.time.Instant;
 import java.util.UUID;

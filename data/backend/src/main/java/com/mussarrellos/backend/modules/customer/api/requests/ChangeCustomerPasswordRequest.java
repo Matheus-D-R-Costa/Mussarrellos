@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class ChangeClientPasswordRequest {
+public class ChangeCustomerPasswordRequest {
     
     @NotBlank(message = "A senha atual é obrigatória")
     private String currentPassword;

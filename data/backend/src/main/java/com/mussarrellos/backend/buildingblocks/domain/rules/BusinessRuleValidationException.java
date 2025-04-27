@@ -1,4 +1,4 @@
-package com.mussarrellos.backend.buildingblocks;
+package com.mussarrellos.backend.buildingblocks.domain.rules;
 
 import lombok.Getter;
 

@@ -1,0 +1,94 @@
+/* ===============================================
+   MUSARELLOS PIZZA - VARIABLES (2025)
+   =============================================== */
+
+:root {
+    /* Color Palette - Warm & Cozy 2025 */
+    --color-primary: #ff6b4a;
+    /* Vibrant tomato red */
+    --color-primary-light: #ff8c72;
+    --color-primary-dark: #d44c30;
+    --color-secondary: #ffc658;
+    /* Golden cheese */
+    --color-text: #2d2926;
+    /* Deep charcoal */
+    --color-text-light: #5d5a56;
+    --color-background: #fcf9f6;
+    /* Warm cream */
+    --color-card: #ffffff;
+    --color-accent: #4a8577;
+    /* Herb green */
+    --color-error: #e63946;
+    --color-success: #2a9d8f;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary), #ff8a5c);
+    --gradient-card: linear-gradient(180deg, #ffffff, #f8f5f2);
+    --gradient-header: linear-gradient(to right, #ff6b4a, #ff8c72);
+
+    /* Typography */
+    --font-primary: 'Outfit', system-ui, sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+    --font-size-xs: 0.75rem;
+    /* 12px */
+    --font-size-sm: 0.875rem;
+    /* 14px */
+    --font-size-base: 1rem;
+    /* 16px */
+    --font-size-lg: 1.125rem;
+    /* 18px */
+    --font-size-xl: 1.25rem;
+    /* 20px */
+    --font-size-2xl: 1.5rem;
+    /* 24px */
+    --font-size-3xl: 1.875rem;
+    /* 30px */
+    --font-size-4xl: 2.25rem;
+    /* 36px */
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    /* 4px */
+    --spacing-sm: 0.5rem;
+    /* 8px */
+    --spacing-md: 1rem;
+    /* 16px */
+    --spacing-lg: 1.5rem;
+    /* 24px */
+    --spacing-xl: 2rem;
+    /* 32px */
+    --spacing-2xl: 2.5rem;
+    /* 40px */
+    --spacing-3xl: 3rem;
+    /* 48px */
+
+    /* Borders & Radiuses */
+    --radius-sm: 0.375rem;
+    /* 6px */
+    --radius-md: 0.75rem;
+    /* 12px */
+    --radius-lg: 1.25rem;
+    /* 20px */
+    --radius-full: 9999px;
+
+    /* Shadows - Neumorphism 2025 */
+    --shadow-soft: 0.5rem 0.5rem 1rem rgba(210, 205, 200, 0.5),
+        -0.5rem -0.5rem 1rem rgba(255, 255, 255, 0.8);
+    --shadow-pressed: inset 0.25rem 0.25rem 0.5rem rgba(210, 205, 200, 0.5),
+        inset -0.25rem -0.25rem 0.5rem rgba(255, 255, 255, 0.8);
+    --shadow-floating: 0.5rem 0.5rem 1.5rem rgba(45, 41, 38, 0.08);
+
+    /* Animations */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+    --transition-slow: 0.4s ease;
+
+    /* Layout */
+    --container-padding: 1.5rem;
+    --container-max-width: 1200px;
+    --header-height: 4.5rem;
+    --footer-height: 12rem;
+}
+
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap'); 

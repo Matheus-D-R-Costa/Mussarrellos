@@ -4,73 +4,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mussarellos - As Melhores Pizzas da Cidade</title>
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="icon" href="https://em-content.zobj.net/thumbs/240/apple/325/pizza_1f355.png" type="image/png">
+    <title>Mussarellos Pizza - Deliciosa Pizza Artesanal</title>
+    <meta name="description" content="As melhores pizzas artesanais com ingredientes frescos e selecionados. Peça já!">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="https://i.imgur.com/rBqxT0V.png" type="image/png">
 </head>
 
 <body>
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">
-                <h1>Mussarellos</h1>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Cardápio</a></li>
-                <li><a href="pages/pedido.html">Carrinho</a></li>
-                <li><a href="pages/login.html">Entrar</a></li>
-            </ul>
-        </nav>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container flex-between">
+            <a href="index.html" class="logo">Mussarellos<span>.</span></a>
+
+            <nav>
+                <div class="nav-mobile" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <ul class="nav-menu" id="mainNav">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="#cardapio" class="nav-link">Cardápio</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                    <li><a href="pages/login.html" class="nav-link">Entrar</a></li>
+                    <li><a href="#" class="btn btn-primary btn-icon">
+                            <i class="fas fa-shopping-cart"></i> Carrinho
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main class="main-content">
-        <section class="hero">
-            <h2>As Melhores Pizzas da Cidade</h2>
-            <p>Sabor inesquecível em cada fatia</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content animate-fadeIn">
+            <h1 class="hero-title">Pizzas Artesanais Feitas Com Amor</h1>
+            <p class="hero-subtitle">Ingredientes selecionados e receitas tradicionais italianas com toque brasileiro
+            </p>
+            <a href="#cardapio" class="btn btn-primary btn-lg">Ver Cardápio</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Pizza Catalog -->
+        <section id="cardapio">
+            <div class="text-center mb-xl">
+                <h2>Nossas Pizzas</h2>
+                <p class="text-light">Escolha entre nossas deliciosas especialidades</p>
+            </div>
+
+            <div class="pizza-grid">
+                <!-- Pizza Card 1 -->
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+                        alt="Pizza Margherita" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">Margherita</h3>
+                        <p class="card-text">Molho de tomate, mussarela fresca, manjericão e um toque de azeite extra
+                            virgem.</p>
+                        <div class="flex-between">
+                            <span class="card-price">R$ 42,90</span>
+                            <a href="pages/pedido.html" class="btn btn-primary btn-sm">Adicionar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pizza Card 2 -->
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+                        alt="Pizza Pepperoni" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">Pepperoni</h3>
+                        <p class="card-text">Generosa camada de pepperoni fatiado sobre molho de tomate e mussarela
+                            derretida.</p>
+                        <div class="flex-between">
+                            <span class="card-price">R$ 48,90</span>
+                            <a href="pages/pedido.html" class="btn btn-primary btn-sm">Adicionar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pizza Card 3 -->
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+                        alt="Pizza Vegetariana" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">Vegetariana</h3>
+                        <p class="card-text">Pimentão, cebola roxa, tomate, azeitonas, champignon e mussarela com molho
+                            especial.</p>
+                        <div class="flex-between">
+                            <span class="card-price">R$ 45,90</span>
+                            <a href="pages/pedido.html" class="btn btn-primary btn-sm">Adicionar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pizza Card 4 -->
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+                        alt="Pizza Frango com Catupiry" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">Frango com Catupiry</h3>
+                        <p class="card-text">Frango desfiado temperado, catupiry cremoso e orégano sobre mussarela
+                            derretida.</p>
+                        <div class="flex-between">
+                            <span class="card-price">R$ 52,90</span>
+                            <a href="pages/pedido.html" class="btn btn-primary btn-sm">Adicionar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pizza Card 5 -->
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+                        alt="Pizza Quatro Queijos" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">Quatro Queijos</h3>
+                        <p class="card-text">Blend perfeito de mussarela, parmesão, provolone e gorgonzola para amantes
+                            de queijo.</p>
+                        <div class="flex-between">
+                            <span class="card-price">R$ 54,90</span>
+                            <a href="pages/pedido.html" class="btn btn-primary btn-sm">Adicionar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pizza Card 6 -->
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+                        alt="Pizza Calabresa" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">Calabresa</h3>
+                        <p class="card-text">Calabresa fatiada com rodelas de cebola, azeitonas pretas e orégano.</p>
+                        <div class="flex-between">
+                            <span class="card-price">R$ 46,90</span>
+                            <a href="pages/pedido.html" class="btn btn-primary btn-sm">Adicionar</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section class="pizza-grid">
-            <div class="pizza-card">
-                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591" alt="Pizza Margherita">
-                <h3>Margherita</h3>
-                <p>Molho de tomate, mozzarella, manjericão fresco</p>
-                <span class="price">R$ 45,90</span>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
+        <!-- About Section -->
+        <section id="sobre" class="py-xl">
+            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--spacing-2xl);">
+                <div>
+                    <h2>Nossa História</h2>
+                    <p>A Mussarellos nasceu em 2015, quando o chef Antonio Mussarellos decidiu trazer para o Brasil as
+                        receitas tradicionais de sua família italiana. Com mais de 80 anos de tradição passada de
+                        geração em geração, nossas pizzas são feitas artesanalmente.</p>
+                    <p>Utilizamos apenas ingredientes frescos e de qualidade, nossa massa fermenta por 48 horas
+                        garantindo aquela textura perfeita: crocante por fora e macia por dentro.</p>
+                    <p>Nossa missão é proporcionar momentos de felicidade através do sabor autêntico de uma verdadeira
+                        pizza italiana com toques da culinária brasileira.</p>
+                    <a href="#" class="btn btn-secondary mt-md">Leia Mais</a>
+                </div>
+                <div class="card"
+                    style="background-image: url('https://images.unsplash.com/photo-1626203050964-a2ceb935c55d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'); background-size: cover; height: 400px;">
+                </div>
             </div>
+        </section>
 
-            <div class="pizza-card">
-                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee" alt="Pizza Pepperoni">
-                <h3>Pepperoni</h3>
-                <p>Molho de tomate, mozzarella, pepperoni</p>
-                <span class="price">R$ 49,90</span>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="pizza-card">
-                <img src="https://images.unsplash.com/photo-1595708684082-a173bb3a06c5" alt="Pizza Quatro Queijos">
-                <h3>Quatro Queijos</h3>
-                <p>Mozzarella, gorgonzola, parmesão, provolone</p>
-                <span class="price">R$ 52,90</span>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
+        <!-- CTA Section -->
+        <section class="py-xl">
+            <div class="card"
+                style="padding: var(--spacing-xl); background: var(--gradient-primary); color: white; text-align: center;">
+                <h2>Peça Sua Pizza Favorita Agora!</h2>
+                <p class="mb-lg">Entregamos sua pizza quentinha e deliciosa em até 40 minutos ou você ganha 20% de
+                    desconto em seu próximo pedido.</p>
+                <a href="pages/pedido.html" class="btn btn-secondary">Fazer Pedido</a>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="contact-info">
-                <h3>Contato</h3>
-                <p>📞 (11) 99999-9999</p>
-                <p>📧 contato@mussarellos.com</p>
-                <p>📍 Rua das Pizzas, 123 - São Paulo, SP</p>
+    <!-- Footer -->
+    <footer class="site-footer" id="contato">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-heading">Mussarellos</h3>
+                    <p>A melhor experiência em pizzas artesanais na sua casa.</p>
+                    <div class="footer-social mt-lg">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua das Pizzas, 123</p>
+                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@mussarellos.com</p>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Horários</h3>
+                    <p>Segunda a Sexta: 18h - 23h</p>
+                    <p>Sábados e Domingos: 18h - 00h</p>
+                    <p>Feriados: 18h - 23h</p>
+                </div>
             </div>
-            <div class="opening-hours">
-                <h3>Horário de Funcionamento</h3>
-                <p>Segunda a Sexta: 18h às 23h</p>
-                <p>Sábado e Domingo: 18h às 00h</p>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mussarellos Pizza. Todos os direitos reservados.</p>
+                <div>
+                    <a href="#" class="footer-link">Política de Privacidade</a>
+                    <a href="#" class="footer-link">Termos de Uso</a>
+                </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        mobileMenuToggle.addEventListener('click', function () {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Animation for pizza cards
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.classList.add('animate-fadeIn');
+        });
+    </script>
 </body>
 
 </html>

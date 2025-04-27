@@ -1,4 +1,8 @@
-package com.mussarrellos.backend.buildingblocks;
+package com.mussarrellos.backend.buildingblocks.domain.entities;
+
+import com.mussarrellos.backend.buildingblocks.domain.rules.BusinessRuleValidationException;
+import com.mussarrellos.backend.buildingblocks.domain.rules.IBusinessRule;
+import com.mussarrellos.backend.buildingblocks.domain.events.IDomainEvent;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,7 +11,6 @@ import java.util.List;
 public abstract class Entity<TId> implements IEntity {
 
     private List<IDomainEvent> domainEvents;
-
     protected abstract TId getId();
 
     @Override

@@ -1,4 +1,4 @@
-package com.mussarrellos.backend.buildingblocks.domain;
+package com.mussarrellos.backend.buildingblocks.domain.events;
 
 import lombok.Getter;
 
@@ -10,9 +10,7 @@ import java.util.UUID;
 public abstract class DomainEventBase implements IDomainEvent {
 
     private final UUID id;
-
     private final Instant occurredOn;
-
     private final int version;
 
     protected DomainEventBase() {

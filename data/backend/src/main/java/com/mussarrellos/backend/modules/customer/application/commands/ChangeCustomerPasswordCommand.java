@@ -5,9 +5,6 @@ import com.mussarrellos.backend.buildingblocks.application.commands.ICommandWith
 
 import java.util.UUID;
 
-/**
- * Comando para alterar a senha de um cliente.
- */
-public record ChangeClientPasswordCommand(UUID clientId, String currentPassword,
-                                          String newPassword) implements ICommandWithoutResult {
-}
+
+public record ChangeCustomerPasswordCommand(UUID clientId, String currentPassword,
+                                            String newPassword) implements ICommandWithoutResult { }

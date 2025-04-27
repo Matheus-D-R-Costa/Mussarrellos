@@ -3,24 +3,20 @@ package com.mussarrellos.backend.modules.customer.application.queries.handlers;
 import com.mussarrellos.backend.buildingblocks.application.queries.IQueryHandler;
 import com.mussarrellos.backend.modules.customer.application.dtos.CustomerDto;
 import com.mussarrellos.backend.modules.customer.application.queries.GetCustomerByEmailQuery;
-import com.mussarrellos.backend.modules.customer.domain.repository.ClientRepository;
+import com.mussarrellos.backend.modules.customer.domain.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
-/**
- * Handler para a query de busca de cliente por email.
- * Transforma a entidade em DTO para exposição externa.
- */
 @Slf4j
 @RequiredArgsConstructor
-public class GetClientByEmailQueryHandler implements IQueryHandler<GetCustomerByEmailQuery, CustomerDto> {
+public class GetCustomerByEmailQueryHandler implements IQueryHandler<GetCustomerByEmailQuery, CustomerDto> {
 
-    private final ClientRepository repository;
+    private final CustomerRepository repository;
 
     @Override
     public Mono<CustomerDto> handle(GetCustomerByEmailQuery query) {
-        log.debug("Handling GetClientByEmailQuery for email: {}", query.email());
+        log.debug("Processando consulta GetClientByEmailQuery para email: {}", query.email());
 
         return repository.findByEmail(query.email())
                 .switchIfEmpty(Mono.error(new IllegalArgumentException("Cliente não encontrado com email: " + query.email())))
@@ -31,7 +27,7 @@ public class GetClientByEmailQueryHandler implements IQueryHandler<GetCustomerBy
                         client.getEmailUpdatedDate(),
                         client.getPasswordUpdatedDate()
                 ))
-                .doOnSuccess(dto -> log.debug("Found client with email: {}", dto.email()))
-                .doOnError(error -> log.error("Error finding client: {}", error.getMessage()));
+                .doOnSuccess(dto -> log.debug("Cliente encontrado com email: {}", dto.email()))
+                .doOnError(error -> log.error("Erro ao buscar cliente: {}", error.getMessage()));
     }
 } 

@@ -9,9 +9,9 @@ import com.mussarrellos.backend.modules.authentication.application.commands.Auth
 import com.mussarrellos.backend.modules.authentication.application.dtos.TokenDto;
 import com.mussarrellos.backend.modules.authentication.domain.AuthenticationException;
 // Keep direct dependency interface
-import com.mussarrellos.backend.modules.client.application.contracts.IClientModule; 
-import com.mussarrellos.backend.modules.client.application.dtos.ClientCredentialsDto;
-import com.mussarrellos.backend.modules.client.application.queries.FindClientCredentialsByEmailQuery; 
+import com.mussarrellos.backend.modules.customer.application.contracts.ICustomerModule;
+import com.mussarrellos.backend.modules.customer.application.dtos.ClientCredentialsDto;
+import com.mussarrellos.backend.modules.customer.application.queries.FindClientCredentialsByEmailQuery;
 // TODO: Add import for ICryptoModule when needed
 // import com.mussarrellos.backend.modules.cryptography.application.contracts.ICryptoModule;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ import reactor.core.publisher.Mono;
 public class AuthenticateClientCommandHandler implements ICommandHandler<AuthenticateClientCommand, TokenDto> {
 
     // Inject the specific module interfaces needed
-    private final IClientModule clientModule; 
+    private final ICustomerModule clientModule;
     // TODO: Inject ICryptoModule when token generation is implemented
     // private final ICryptoModule cryptoModule;
 

@@ -1,28 +1,24 @@
 package com.mussarrellos.backend.modules.customer.application.commands.handlers;
 
 import com.mussarrellos.backend.buildingblocks.application.commands.ICommandWithoutResultHandler;
-import com.mussarrellos.backend.modules.customer.application.commands.ChangeClientEmailCommand;
-import com.mussarrellos.backend.modules.customer.domain.entities.types.ClientId;
-import com.mussarrellos.backend.modules.customer.domain.repository.ClientRepository;
+import com.mussarrellos.backend.modules.customer.application.commands.ChangeCustomerEmailCommand;
+import com.mussarrellos.backend.modules.customer.domain.entities.types.CustomerId;
+import com.mussarrellos.backend.modules.customer.domain.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
-/**
- * Handler para o comando de alteração de email do cliente.
- * Localiza o cliente e atualiza seu email.
- */
 @Slf4j
 @RequiredArgsConstructor
-public class ChangeClientEmailCommandHandler implements ICommandWithoutResultHandler<ChangeClientEmailCommand> {
+public class ChangeCustomerEmailCommandHandler implements ICommandWithoutResultHandler<ChangeCustomerEmailCommand> {
 
-    private final ClientRepository repository;
+    private final CustomerRepository repository;
 
     @Override
-    public Mono<Void> handle(ChangeClientEmailCommand command) {
-        log.debug("Handling ChangeClientEmailCommand for client ID: {}", command.clientId());
+    public Mono<Void> handle(ChangeCustomerEmailCommand command) {
+        log.debug("Processando comando ChangeClientEmailCommand para cliente ID: {}", command.clientId());
         
-        return repository.findById(new ClientId(command.clientId()))
+        return repository.findById(new CustomerId(command.clientId()))
             .switchIfEmpty(Mono.error(new IllegalArgumentException("Cliente não encontrado com ID: " + command.clientId())))
             .flatMap(client -> {
                 client.changeEmail(
@@ -32,7 +28,7 @@ public class ChangeClientEmailCommandHandler implements ICommandWithoutResultHan
                 
                 return repository.save(client).then();
             })
-            .doOnSuccess(v -> log.debug("Client email changed successfully for ID: {}", command.clientId()))
-            .doOnError(error -> log.error("Error changing client email: {}", error.getMessage()));
+            .doOnSuccess(v -> log.debug("Email do cliente alterado com sucesso para ID: {}", command.clientId()))
+            .doOnError(error -> log.error("Erro ao alterar email do cliente: {}", error.getMessage()));
     }
 } 

@@ -9,17 +9,17 @@ import com.mussarrellos.backend.modules.customer.application.commands.handlers.R
 import com.mussarrellos.backend.modules.customer.application.contracts.ICustomerModule;
 import com.mussarrellos.backend.modules.customer.application.queries.handlers.GetCustomerByEmailQueryHandler;
 import com.mussarrellos.backend.modules.customer.application.queries.handlers.GetCustomerByIdQueryHandler;
-import com.mussarrellos.backend.modules.customer.domain.repository.ClientRepository;
-import com.mussarrellos.backend.modules.customer.infra.persistance.adapter.ClientRepositoryAdapter;
-import com.mussarrellos.backend.modules.customer.infra.persistance.mapper.ClientModelMapper;
-import com.mussarrellos.backend.modules.customer.infra.persistance.repository.ClientModelRepository;
+import com.mussarrellos.backend.modules.customer.domain.repository.CustomerRepository;
+import com.mussarrellos.backend.modules.customer.infra.persistance.adapter.CustomerRepositoryAdapter;
+import com.mussarrellos.backend.modules.customer.infra.persistance.mapper.CustomerModelMapper;
+import com.mussarrellos.backend.modules.customer.infra.persistance.repository.CustomerModelRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-public class ClientModuleConfig {
+public class CustomerModuleConfig {
 
     @Bean
     BCryptPasswordEncoder passwordEncoder() {
@@ -27,35 +27,35 @@ public class ClientModuleConfig {
     }
 
     @Bean
-    public ClientRepository clientRepository(ClientModelRepository repository, Outbox outbox,
-                                             OutboxMessageFactory messageFactory, ClientModelMapper mapper) {
+    public CustomerRepository clientRepository(CustomerModelRepository repository, Outbox outbox,
+                                               OutboxMessageFactory messageFactory, CustomerModelMapper mapper) {
 
-        return new ClientRepositoryAdapter(repository, outbox, messageFactory, mapper);
+        return new CustomerRepositoryAdapter(repository, outbox, messageFactory, mapper);
     }
 
     @Bean
-    ChangeCustomerEmailCommandHandler changeClientEmailCommandHandler(ClientRepository clientRepository) {
-        return new ChangeCustomerEmailCommandHandler(clientRepository);
+    ChangeCustomerEmailCommandHandler changeClientEmailCommandHandler(CustomerRepository customerRepository) {
+        return new ChangeCustomerEmailCommandHandler(customerRepository);
     }
 
     @Bean
-    ChangeCustomerPasswordCommandHandler changeClientPasswordCommandHandler(ClientRepository clientRepository) {
-        return new ChangeCustomerPasswordCommandHandler(clientRepository);
+    ChangeCustomerPasswordCommandHandler changeClientPasswordCommandHandler(CustomerRepository customerRepository) {
+        return new ChangeCustomerPasswordCommandHandler(customerRepository);
     }
 
     @Bean
-    RegisterCustomerCommandHandler registerClientCommandHandler(ClientRepository clientRepository) {
-        return new RegisterCustomerCommandHandler(clientRepository);
+    RegisterCustomerCommandHandler registerClientCommandHandler(CustomerRepository customerRepository) {
+        return new RegisterCustomerCommandHandler(customerRepository);
     }
 
     @Bean
-    GetCustomerByEmailQueryHandler getClientByEmailQueryHandler(ClientRepository clientRepository) {
-        return new GetCustomerByEmailQueryHandler(clientRepository);
+    GetCustomerByEmailQueryHandler getClientByEmailQueryHandler(CustomerRepository customerRepository) {
+        return new GetCustomerByEmailQueryHandler(customerRepository);
     }
 
     @Bean
-    GetCustomerByIdQueryHandler getClientByIdQueryHandler(ClientRepository clientRepository) {
-        return new GetCustomerByIdQueryHandler(clientRepository);
+    GetCustomerByIdQueryHandler getClientByIdQueryHandler(CustomerRepository customerRepository) {
+        return new GetCustomerByIdQueryHandler(customerRepository);
     }
 
     @Bean

@@ -1,11 +1,5 @@
-package com.mussarrellos.backend.buildingblocks.domain.specification;
+package com.mussarrellos.backend.buildingblocks.domain.specifications;
 
-/**
- * Implementação base para especificações compostas.
- * Fornece uma classe base abstrata para implementações concretas do padrão Specification.
- *
- * @param <T> O tipo do objeto a ser avaliado pela especificação
- */
 public abstract class CompositeSpecification<T> implements Specification<T> {
     
     @Override
@@ -22,10 +16,7 @@ public abstract class CompositeSpecification<T> implements Specification<T> {
     public Specification<T> not() {
         return new NotSpecification<>(this);
     }
-    
-    /**
-     * Especificação que representa a conjunção (AND) de duas especificações.
-     */
+
     private static class AndSpecification<T> extends CompositeSpecification<T> {
         private final Specification<T> left;
         private final Specification<T> right;
@@ -40,10 +31,7 @@ public abstract class CompositeSpecification<T> implements Specification<T> {
             return left.isSatisfiedBy(candidate) && right.isSatisfiedBy(candidate);
         }
     }
-    
-    /**
-     * Especificação que representa a disjunção (OR) de duas especificações.
-     */
+
     private static class OrSpecification<T> extends CompositeSpecification<T> {
         private final Specification<T> left;
         private final Specification<T> right;
@@ -58,10 +46,7 @@ public abstract class CompositeSpecification<T> implements Specification<T> {
             return left.isSatisfiedBy(candidate) || right.isSatisfiedBy(candidate);
         }
     }
-    
-    /**
-     * Especificação que representa a negação (NOT) de uma especificação.
-     */
+
     private static class NotSpecification<T> extends CompositeSpecification<T> {
         private final Specification<T> spec;
         

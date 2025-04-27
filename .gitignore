@@ -6,6 +6,7 @@ data/database
 /data/backend/.gradle
 /data/backend/build
 /data/backend/gradle/wrapper/gradle-wrapper.jar
+/data/backend/src/main/resources/application.yml
 /data/backend/src/main/build
 /data/backend/src/test/build
 

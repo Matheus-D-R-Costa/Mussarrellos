@@ -1,35 +1,28 @@
 package com.mussarrellos.backend.modules.customer.infra.persistance.adapter;
 
-import com.mussarrellos.backend.buildingblocks.IDomainEvent;
 import com.mussarrellos.backend.buildingblocks.application.outbox.Outbox;
 import com.mussarrellos.backend.buildingblocks.application.outbox.OutboxMessage;
 import com.mussarrellos.backend.buildingblocks.application.outbox.OutboxMessageFactory;
+import com.mussarrellos.backend.buildingblocks.domain.events.IDomainEvent;
 import com.mussarrellos.backend.modules.customer.domain.entities.Customer;
 import com.mussarrellos.backend.modules.customer.domain.entities.types.CustomerId;
-import com.mussarrellos.backend.modules.customer.domain.repository.ClientRepository;
-import com.mussarrellos.backend.modules.customer.infra.persistance.mapper.ClientModelMapper;
-import com.mussarrellos.backend.modules.customer.infra.persistance.repository.ClientModelRepository;
+import com.mussarrellos.backend.modules.customer.domain.repository.CustomerRepository;
+import com.mussarrellos.backend.modules.customer.infra.persistance.mapper.CustomerModelMapper;
+import com.mussarrellos.backend.modules.customer.infra.persistance.repository.CustomerModelRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 import java.util.UUID;
 
-/**
- * Implementação do repositório de cliente.
- * Adapta a interface do repositório do domínio para o gateway da infraestrutura.
- * 
- * Esta classe não precisa da anotação @Repository pois é instanciada explicitamente via @Bean
- * na classe UserConfig.
- */
 @Slf4j
 @RequiredArgsConstructor
-public class ClientRepositoryAdapter implements ClientRepository {
+public class CustomerRepositoryAdapter implements CustomerRepository {
 
-    private final ClientModelRepository repository;
+    private final CustomerModelRepository repository;
     private final Outbox outbox;
     private final OutboxMessageFactory outboxMessageFactory;
-    private final ClientModelMapper mapper;
+    private final CustomerModelMapper mapper;
 
     @Override
     public Mono<UUID> save(Customer customer) {

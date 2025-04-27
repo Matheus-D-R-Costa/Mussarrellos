@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @Table("clients")
 @Getter
-public class ClientModel implements Serializable {
+public class CustomerModel implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

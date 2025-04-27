@@ -1,11 +1,8 @@
 package com.mussarrellos.backend.modules.customer.domain.entities;
 
 import com.mussarrellos.backend.buildingblocks.domain.entities.Entity;
-import com.mussarrellos.backend.modules.customer.domain.entities.types.ClientId;
-import com.mussarrellos.backend.modules.customer.domain.events.ClientCreatedDomainEvent;
-import com.mussarrellos.backend.modules.customer.domain.events.ClientEmailChangedEvent;
-import com.mussarrellos.backend.modules.customer.domain.events.ClientPasswordChangedEvent;
-import com.mussarrellos.backend.modules.customer.domain.rules.ClientRulesFactory;
+import com.mussarrellos.backend.modules.customer.domain.entities.types.CustomerId;
+import com.mussarrellos.backend.modules.customer.domain.rules.CustomerRulesFactory;
 import lombok.Getter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -13,9 +10,9 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
-public class Client extends Entity<ClientId> {
+public class Customer extends Entity<CustomerId> {
 
-    private final ClientId id;
+    private final CustomerId id;
     private String email;
     private String hashedPassword;
     private final LocalDateTime registrationDate;
@@ -24,12 +21,12 @@ public class Client extends Entity<ClientId> {
     
     private final PasswordEncoder passwordEncoder;
 
-    private Client(ClientId id, String email, String password, EmailUniquenessChecker checker, PasswordEncoder passwordEncoder) {
+    private Customer(CustomerId id, String email, String password, EmailUniquenessChecker checker, PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
         
-        this.checkRule(ClientRulesFactory.emailMustBeUnique(email, checker));
-        this.checkRule(ClientRulesFactory.emailMustBeValid(email));
-        this.checkRule(ClientRulesFactory.passwordMustBeStrong(password));
+        this.checkRule(CustomerRulesFactory.emailMustBeUnique(email, checker));
+        this.checkRule(CustomerRulesFactory.emailMustBeValid(email));
+        this.checkRule(CustomerRulesFactory.passwordMustBeStrong(password));
 
         this.id = id;
         this.email = email;
@@ -38,31 +35,32 @@ public class Client extends Entity<ClientId> {
         this.emailUpdatedDate = LocalDateTime.now();
         this.passwordUpdatedDate = LocalDateTime.now();
 
-        this.addDomainEvent(new ClientCreatedDomainEvent(id.getValue(), email));
+//        this.addDomainEvent(new ClientCreatedDomainEvent(id.getValue(), email)); TODO: Refatorar todas os DomainEventHandlers para usar a interface do buildingblocks...
     }
 
     @Override
-    public ClientId getId() {
+    public CustomerId getId() {
         return id;
     }
 
-    public static Client create(String email, String password, EmailUniquenessChecker checker, PasswordEncoder passwordEncoder) {
-        ClientId id = new ClientId(UUID.randomUUID());
-        return new Client(id, email, password, checker, passwordEncoder);
+    public static Customer create(String email, String password, EmailUniquenessChecker checker, PasswordEncoder passwordEncoder) {
+        CustomerId id = new CustomerId(UUID.randomUUID());
+        return new Customer(id, email, password, checker, passwordEncoder);
     }
 
     public void changeEmail(String newEmail, EmailUniquenessChecker checker) {
         String oldEmail = this.email;
         
-        this.checkRule(ClientRulesFactory.emailMustBeValid(newEmail));
-        this.checkRule(ClientRulesFactory.emailMustBeUnique(newEmail, checker));
+        this.checkRule(CustomerRulesFactory.emailMustBeValid(newEmail));
+        this.checkRule(CustomerRulesFactory.emailMustBeUnique(newEmail, checker));
 
         this.email = newEmail;
         this.emailUpdatedDate = LocalDateTime.now();
 
-        this.addDomainEvent(ClientEmailChangedEvent.create(
-                id.getValue(), oldEmail, newEmail
-        ));
+//        this.addDomainEvent(ClientEmailChangedEvent.create(
+//                id.getValue(), oldEmail, newEmail
+//        )); TODO: Refatorar todas os DomainEventHandlers para usar a interface do buildingblocks...
+//    }
     }
 
     public void changePassword(String currentPassword, String newPassword) {
@@ -70,13 +68,14 @@ public class Client extends Entity<ClientId> {
             throw new IllegalArgumentException("A senha atual está incorreta."); // TODO: lançar exception personalizada... (elegante)
         }
 
-        this.checkRule(ClientRulesFactory.passwordMustBeStrong(newPassword));
-        this.checkRule(ClientRulesFactory.passwordMustNotBeSame(newPassword, 
+        this.checkRule(CustomerRulesFactory.passwordMustBeStrong(newPassword));
+        this.checkRule(CustomerRulesFactory.passwordMustNotBeSame(newPassword,
                 (password) -> passwordEncoder.matches(password, hashedPassword)));
 
         this.hashedPassword = hashPassword(newPassword);
         this.passwordUpdatedDate = LocalDateTime.now();
-        this.addDomainEvent(ClientPasswordChangedEvent.create(id.getValue()));
+//        this.addDomainEvent(ClientPasswordChangedEvent.create(id.getValue())); TODO: Refatorar todas os DomainEventHandlers para usar a interface do buildingblocks...
+//    }
     }
 
     private String hashPassword(String password) {

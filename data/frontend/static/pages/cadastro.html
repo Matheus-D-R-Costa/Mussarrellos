@@ -4,61 +4,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Mussarellos</title>
-    <link rel="stylesheet" href="../../styles/style.css">
-    <link rel="icon" href="https://em-content.zobj.net/thumbs/240/apple/325/pizza_1f355.png" type="image/png">
+    <title>Cadastro - Mussarellos Pizza</title>
+    <meta name="description"
+        content="Crie sua conta na Mussarellos Pizza para fazer seus pedidos e aproveitar promoções exclusivas.">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="https://i.imgur.com/rBqxT0V.png" type="image/png">
 </head>
 
 <body>
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">
-                <h1>Mussarellos</h1>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="../index.html">Cardápio</a></li>
-                <li><a href="pedido.html">Carrinho</a></li>
-                <li><a href="login.html">Entrar</a></li>
-            </ul>
-        </nav>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container flex-between">
+            <a href="../index.html" class="logo">Mussarellos<span>.</span></a>
+
+            <nav>
+                <div class="nav-mobile" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <ul class="nav-menu" id="mainNav">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="../index.html#cardapio" class="nav-link">Cardápio</a></li>
+                    <li><a href="../index.html#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="../index.html#contato" class="nav-link">Contato</a></li>
+                    <li><a href="login.html" class="nav-link">Entrar</a></li>
+                    <li><a href="pedido.html" class="btn btn-primary btn-icon">
+                            <i class="fas fa-shopping-cart"></i> Carrinho
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main class="main-content">
-        <section class="auth-container">
-            <h2>Cadastro</h2>
-            <form class="auth-form">
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" id="name" required>
+    <main>
+        <div class="auth-container">
+            <section class="auth-card animate-fadeIn">
+                <h1 class="auth-title">Criar nova conta</h1>
+
+                <form class="form">
+                    <div class="form-group">
+                        <label for="nome" class="form-label">Nome completo</label>
+                        <input type="text" id="nome" name="nome" class="form-input" placeholder="Seu nome completo"
+                            required autocomplete="name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com"
+                            required autocomplete="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Senha</label>
+                        <input type="password" id="password" name="password" class="form-input"
+                            placeholder="Mínimo 8 caracteres" required autocomplete="new-password" minlength="8">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password-confirm" class="form-label">Confirmar senha</label>
+                        <input type="password" id="password-confirm" name="password-confirm" class="form-input"
+                            placeholder="Repita sua senha" required autocomplete="new-password">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-checkbox">
+                            <input type="checkbox" name="terms" required>
+                            <span>Eu aceito os <a href="#">Termos de Uso</a> e <a href="#">Política de
+                                    Privacidade</a></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-full">Criar Conta</button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Já tem uma conta? <a href="login.html">Fazer login</a></p>
+
+                    <div class="mt-lg">
+                        <p class="text-light mb-sm">Ou continue com</p>
+                        <div class="flex-center" style="gap: var(--spacing-md);">
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fab fa-apple"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm-password">Confirmar Senha</label>
-                    <input type="password" id="confirm-password" required>
-                </div>
-                <button type="submit" class="submit-btn">Cadastrar</button>
-                <p class="auth-link">Já tem conta? <a href="login.html">Faça login</a></p>
-            </form>
-        </section>
+            </section>
+        </div>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="contact-info">
-                <h3>Contato</h3>
-                <p>📞 (11) 99999-9999</p>
-                <p>📧 contato@mussarellos.com</p>
-                <p>📍 Rua das Pizzas, 123 - São Paulo, SP</p>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-heading">Mussarellos</h3>
+                    <p>A melhor experiência em pizzas artesanais na sua casa.</p>
+                    <div class="footer-social mt-lg">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua das Pizzas, 123</p>
+                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@mussarellos.com</p>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Horários</h3>
+                    <p>Segunda a Sexta: 18h - 23h</p>
+                    <p>Sábados e Domingos: 18h - 00h</p>
+                    <p>Feriados: 18h - 23h</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mussarellos Pizza. Todos os direitos reservados.</p>
+                <div>
+                    <a href="#" class="footer-link">Política de Privacidade</a>
+                    <a href="#" class="footer-link">Termos de Uso</a>
+                </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        mobileMenuToggle.addEventListener('click', function () {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Simple password match validation
+        const form = document.querySelector('form');
+        const password = document.getElementById('password');
+        const passwordConfirm = document.getElementById('password-confirm');
+
+        form.addEventListener('submit', function (event) {
+            if (password.value !== passwordConfirm.value) {
+                event.preventDefault();
+                passwordConfirm.setCustomValidity('As senhas não coincidem');
+                passwordConfirm.reportValidity();
+            } else {
+                passwordConfirm.setCustomValidity('');
+            }
+        });
+
+        passwordConfirm.addEventListener('input', function () {
+            if (password.value !== passwordConfirm.value) {
+                passwordConfirm.setCustomValidity('As senhas não coincidem');
+            } else {
+                passwordConfirm.setCustomValidity('');
+            }
+        });
+    </script>
 </body>
 
 </html>

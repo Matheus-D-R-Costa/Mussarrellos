@@ -10,10 +10,6 @@ import reactor.core.publisher.Mono;
 
 import java.security.interfaces.RSAPublicKey;
 
-/**
- * Handler para o comando de geração de chave RSA interno ao módulo Cryptography.
- * Este handler lida com comandos internos e depende diretamente do serviço de domínio.
- */
 @Component
 @RequiredArgsConstructor
 public class GenerateRSAKeyCommandHandler implements ICommandHandler<GenerateRSAKeyCommand, RSAKeyDto> {

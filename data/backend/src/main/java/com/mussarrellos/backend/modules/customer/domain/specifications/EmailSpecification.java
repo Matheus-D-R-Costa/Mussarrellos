@@ -1,13 +1,9 @@
-package com.mussarrellos.backend.modules.customer.domain.specification;
+package com.mussarrellos.backend.modules.customer.domain.specifications;
 
 import com.mussarrellos.backend.buildingblocks.domain.specifications.CompositeSpecification;
 
 import java.util.regex.Pattern;
 
-/**
- * Especificação que valida se um endereço de email tem formato válido.
- * Implementa o padrão Specification para regras de validação de email.
- */
 public class EmailSpecification extends CompositeSpecification<String> {
     
     private static final Pattern EMAIL_PATTERN = Pattern.compile(
@@ -18,28 +14,15 @@ public class EmailSpecification extends CompositeSpecification<String> {
     public boolean isSatisfiedBy(String email) {
         return email != null && !email.isBlank() && EMAIL_PATTERN.matcher(email).matches();
     }
-    
-    /**
-     * Cria uma nova especificação que verifica se o domínio do email é de um provedor confiável.
-     * 
-     * @return Uma especificação para domínios confiáveis
-     */
+
     public static EmailSpecification withTrustedDomain() {
         return new TrustedDomainEmailSpecification();
     }
-    
-    /**
-     * Cria uma nova especificação que verifica se o email não é descartável.
-     * 
-     * @return Uma especificação para emails não-descartáveis
-     */
+
     public static EmailSpecification nonDisposable() {
         return new NonDisposableEmailSpecification();
     }
-    
-    /**
-     * Especificação que valida se um email pertence a um domínio confiável.
-     */
+
     private static class TrustedDomainEmailSpecification extends EmailSpecification {
         private static final String[] TRUSTED_DOMAINS = {
                 "gmail.com", "outlook.com", "hotmail.com", "yahoo.com", 
@@ -63,10 +46,8 @@ public class EmailSpecification extends CompositeSpecification<String> {
             return false;
         }
     }
-    
-    /**
-     * Especificação que valida se um email não é de um serviço descartável.
-     */
+
+    // Evoluir essas duas listas para um txt depois?
     private static class NonDisposableEmailSpecification extends EmailSpecification {
         private static final String[] DISPOSABLE_DOMAINS = {
                 "tempmail.com", "guerrillamail.com", "10minutemail.com",

@@ -1,27 +1,23 @@
 package com.mussarrellos.backend.modules.customer.application.commands.handlers;
 
 import com.mussarrellos.backend.buildingblocks.application.commands.CommandHandler;
-import com.mussarrellos.backend.modules.customer.application.commands.ChangeClientPasswordCommand;
-import com.mussarrellos.backend.modules.customer.domain.entities.types.ClientId;
-import com.mussarrellos.backend.modules.customer.domain.repository.ClientRepository;
+import com.mussarrellos.backend.modules.customer.application.commands.ChangeCustomerPasswordCommand;
+import com.mussarrellos.backend.modules.customer.domain.entities.types.CustomerId;
+import com.mussarrellos.backend.modules.customer.domain.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
-/**
- * Handler para o comando de alteração de senha do cliente.
- * Coordena a busca, alteração e persistência do cliente.
- */
 @Slf4j
 @RequiredArgsConstructor
-public class ChangeClientPasswordCommandHandler implements CommandHandler<ChangeClientPasswordCommand, Void> {
-    private final ClientRepository clientRepository;
+public class ChangeCustomerPasswordCommandHandler implements CommandHandler<ChangeCustomerPasswordCommand, Void> {
+    private final CustomerRepository customerRepository;
 
     @Override
-    public Mono<Void> handle(ChangeClientPasswordCommand command) {
-        log.debug("Handling ChangeClientPasswordCommand for client ID: {}", command.clientId());
+    public Mono<Void> handle(ChangeCustomerPasswordCommand command) {
+        log.debug("Processando comando ChangeClientPasswordCommand para cliente ID: {}", command.clientId());
         
-        return clientRepository.findById(new ClientId(command.clientId()))
+        return customerRepository.findById(new CustomerId(command.clientId()))
             .switchIfEmpty(Mono.error(new IllegalArgumentException("Cliente não encontrado com ID: " + command.clientId())))
             .flatMap(client -> {
                 try {
@@ -32,13 +28,13 @@ public class ChangeClientPasswordCommandHandler implements CommandHandler<Change
                     );
                     
                     // Salva as alterações
-                    return clientRepository.save(client);
+                    return customerRepository.save(client);
                 } catch (IllegalArgumentException e) {
                     return Mono.error(e);
                 }
             })
             .then() // Converte para Mono<Void>
-            .doOnSuccess(v -> log.debug("Client password changed successfully for client ID: {}", command.clientId()))
-            .doOnError(error -> log.error("Error changing client password: {}", error.getMessage()));
+            .doOnSuccess(v -> log.debug("Senha do cliente alterada com sucesso para cliente ID: {}", command.clientId()))
+            .doOnError(error -> log.error("Erro ao alterar senha do cliente: {}", error.getMessage()));
     }
 } 

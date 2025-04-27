@@ -1,0 +1,85 @@
+/* ===============================================
+   MUSARELLOS PIZZA - RESPONSIVE (2025)
+   =============================================== */
+
+@media (max-width: 992px) {
+    :root {
+        --container-padding: 1rem;
+    }
+
+    .hero {
+        height: 400px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --header-height: 4rem;
+    }
+
+    h1 {
+        font-size: var(--font-size-3xl);
+    }
+
+    h2 {
+        font-size: var(--font-size-2xl);
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background-color: var(--color-card);
+        flex-direction: column;
+        padding: var(--spacing-lg);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path var(--transition-normal);
+        z-index: 99;
+    }
+
+    .nav-menu.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .nav-mobile {
+        display: block;
+        font-size: var(--font-size-xl);
+        cursor: pointer;
+    }
+
+    .hero {
+        height: 350px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --spacing-xl: 1.5rem;
+        --spacing-2xl: 2rem;
+        --spacing-3xl: 2.5rem;
+    }
+
+    .pizza-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-table {
+        display: block;
+        overflow-x: auto;
+    }
+} 

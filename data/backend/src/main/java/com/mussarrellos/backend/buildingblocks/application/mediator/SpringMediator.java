@@ -1,13 +1,11 @@
 package com.mussarrellos.backend.buildingblocks.application.mediator;
 
-import com.mussarrellos.backend.buildingblocks.application.commands.CommandHandler;
 import com.mussarrellos.backend.buildingblocks.application.commands.ICommand;
 import com.mussarrellos.backend.buildingblocks.application.commands.ICommandHandler;
 import com.mussarrellos.backend.buildingblocks.application.commands.ICommandWithoutResult;
 import com.mussarrellos.backend.buildingblocks.application.commands.ICommandWithoutResultHandler;
 import com.mussarrellos.backend.buildingblocks.application.queries.IQuery;
 import com.mussarrellos.backend.buildingblocks.application.queries.IQueryHandler;
-import com.mussarrellos.backend.buildingblocks.application.queries.QueryHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
@@ -16,10 +14,6 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-/**
- * Implementação do Mediator usando o Spring para resolução de handlers.
- * Permite o desacoplamento entre remetentes e destinatários de mensagens.
- */
 @Slf4j
 @Component
 @RequiredArgsConstructor

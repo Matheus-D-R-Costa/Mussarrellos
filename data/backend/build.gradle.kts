@@ -31,7 +31,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.modulith:spring-modulith-starter-core")
-//    implementation("org.springframework.modulith:spring-modulith-starter-jpa")
+    implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j")
     implementation("org.mapstruct:mapstruct:1.6.3")
     implementation("org.apache.logging.log4j:log4j-core:3.0.0-beta3")
     implementation("commons-validator:commons-validator:1.7")

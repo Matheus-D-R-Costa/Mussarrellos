@@ -1,7 +1,7 @@
 package com.mussarrellos.backend.modules.customer.application;
 
 import com.mussarrellos.backend.buildingblocks.application.BaseModule;
-import com.mussarrellos.backend.modules.customer.application.contracts.IClientModule;
+import com.mussarrellos.backend.modules.customer.application.contracts.ICustomerModule;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 
@@ -10,15 +10,15 @@ import org.springframework.context.ApplicationContext;
  * Estende BaseModule para aproveitar a implementação padrão dos métodos.
  */
 @Slf4j
-public class ClientModule extends BaseModule<IClientModule> implements IClientModule {
+public class CustomerModule extends BaseModule<ICustomerModule> implements ICustomerModule {
 
     /**
      * Construtor para o módulo de usuários.
      *
      * @param applicationContext O contexto da aplicação Spring
      */
-    public ClientModule(ApplicationContext applicationContext) {
-        super(applicationContext, IClientModule.class);
+    public CustomerModule(ApplicationContext applicationContext) {
+        super(applicationContext, ICustomerModule.class);
     }
     
 }

@@ -1,6 +1,5 @@
-package com.mussarrellos.backend.buildingblocks;
+package com.mussarrellos.backend.buildingblocks.domain.events;
 
-import com.mussarrellos.backend.buildingblocks.domain.events.IDomainEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
@@ -15,4 +14,5 @@ public class DomainEventPublisher {
     public void publish(IDomainEvent event) {
         eventPublisher.publishEvent(event);
     }
+
 } 

@@ -4,103 +4,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Pedido - Mussarellos</title>
-    <link rel="stylesheet" href="../../styles/style.css">
-    <link rel="icon" href="https://em-content.zobj.net/thumbs/240/apple/325/pizza_1f355.png" type="image/png">
+    <title>Seu Pedido - Mussarellos Pizza</title>
+    <meta name="description" content="Confira e finalize seu pedido na Mussarellos Pizza.">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="https://i.imgur.com/rBqxT0V.png" type="image/png">
 </head>
 
 <body>
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">
-                <h1>Mussarellos</h1>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="../index.html">Cardápio</a></li>
-                <li><a href="pedido.html" class="active">Carrinho</a></li>
-                <li><a href="login.html">Entrar</a></li>
-            </ul>
-        </nav>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container flex-between">
+            <a href="../index.html" class="logo">Mussarellos<span>.</span></a>
+
+            <nav>
+                <div class="nav-mobile" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <ul class="nav-menu" id="mainNav">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="../index.html#cardapio" class="nav-link">Cardápio</a></li>
+                    <li><a href="../index.html#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="../index.html#contato" class="nav-link">Contato</a></li>
+                    <li><a href="login.html" class="nav-link">Entrar</a></li>
+                    <li><a href="pedido.html" class="btn btn-primary btn-icon">
+                            <i class="fas fa-shopping-cart"></i> Carrinho
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main class="main-content">
-        <section class="cart-container">
-            <h2>Seu Pedido</h2>
+    <main class="container py-xl animate-fadeIn">
+        <h1 class="mb-xl">Seu Pedido</h1>
 
-            <div class="cart-items">
-                <table class="cart-table">
-                    <thead>
-                        <tr>
-                            <th>Pizza</th>
-                            <th>Tamanho</th>
-                            <th>Quantidade</th>
-                            <th>Preço</th>
-                            <th>Subtotal</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Margherita</td>
-                            <td>Média</td>
-                            <td>
-                                <div class="quantity-controls">
-                                    <button class="qty-btn">-</button>
-                                    <span>1</span>
-                                    <button class="qty-btn">+</button>
-                                </div>
-                            </td>
-                            <td>R$ 45,90</td>
-                            <td>R$ 45,90</td>
-                            <td><button class="remove-btn">🗑️</button></td>
-                        </tr>
-                        <tr>
-                            <td>Pepperoni</td>
-                            <td>Grande</td>
-                            <td>
-                                <div class="quantity-controls">
-                                    <button class="qty-btn">-</button>
-                                    <span>2</span>
-                                    <button class="qty-btn">+</button>
-                                </div>
-                            </td>
-                            <td>R$ 49,90</td>
-                            <td>R$ 99,80</td>
-                            <td><button class="remove-btn">🗑️</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <!-- Order Items Table -->
+        <section>
+            <table class="order-table">
+                <thead>
+                    <tr>
+                        <th>Pizza</th>
+                        <th>Tamanho</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                        <th>Subtotal</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="flex" style="gap: var(--spacing-md); align-items: center;">
+                                <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=80&q=80"
+                                    alt="Pizza Margherita"
+                                    style="width: 50px; height: 50px; border-radius: var(--radius-sm); object-fit: cover;">
+                                <span>Margherita</span>
+                            </div>
+                        </td>
+                        <td>Média</td>
+                        <td>
+                            <div class="flex" style="gap: var(--spacing-xs); align-items: center;">
+                                <button class="btn btn-sm btn-secondary qty-btn" data-action="decrease">-</button>
+                                <span class="qty-value">1</span>
+                                <button class="btn btn-sm btn-secondary qty-btn" data-action="increase">+</button>
+                            </div>
+                        </td>
+                        <td>R$ 42,90</td>
+                        <td>R$ 42,90</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline remove-item"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="flex" style="gap: var(--spacing-md); align-items: center;">
+                                <img src="https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=80&q=80"
+                                    alt="Pizza Pepperoni"
+                                    style="width: 50px; height: 50px; border-radius: var(--radius-sm); object-fit: cover;">
+                                <span>Pepperoni</span>
+                            </div>
+                        </td>
+                        <td>Grande</td>
+                        <td>
+                            <div class="flex" style="gap: var(--spacing-xs); align-items: center;">
+                                <button class="btn btn-sm btn-secondary qty-btn" data-action="decrease">-</button>
+                                <span class="qty-value">2</span>
+                                <button class="btn btn-sm btn-secondary qty-btn" data-action="increase">+</button>
+                            </div>
+                        </td>
+                        <td>R$ 58,90</td>
+                        <td>R$ 117,80</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline remove-item"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="text-right mt-md">
+                <button class="btn btn-secondary">Continuar Comprando</button>
+            </div>
+        </section>
+
+        <!-- Order Summary -->
+        <section class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--spacing-xl);">
+            <div class="order-summary">
+                <h2 class="mb-lg">Endereço de Entrega</h2>
+
+                <form class="form" style="max-width: 100%;">
+                    <div class="form-group">
+                        <label for="cep" class="form-label">CEP</label>
+                        <input type="text" id="cep" name="cep" class="form-input" placeholder="00000-000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endereco" class="form-label">Endereço</label>
+                        <input type="text" id="endereco" name="endereco" class="form-input"
+                            placeholder="Rua, Avenida, etc" required>
+                    </div>
+
+                    <div class="grid" style="grid-template-columns: 3fr 1fr; gap: var(--spacing-md);">
+                        <div class="form-group">
+                            <label for="bairro" class="form-label">Bairro</label>
+                            <input type="text" id="bairro" name="bairro" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="numero" class="form-label">Número</label>
+                            <input type="text" id="numero" name="numero" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="complemento" class="form-label">Complemento (opcional)</label>
+                        <input type="text" id="complemento" name="complemento" class="form-input"
+                            placeholder="Apto, bloco, etc">
+                    </div>
+                </form>
             </div>
 
             <div class="order-summary">
-                <h3>Resumo do Pedido</h3>
-                <div class="summary-item">
-                    <span>Subtotal:</span>
-                    <span>R$ 145,70</span>
+                <h2 class="mb-lg">Resumo do Pedido</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal (3 itens)</span>
+                    <span>R$ 160,70</span>
                 </div>
-                <div class="summary-item">
-                    <span>Frete:</span>
+
+                <div class="summary-row">
+                    <span>Desconto</span>
+                    <span>R$ 0,00</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Frete</span>
                     <span>R$ 5,00</span>
                 </div>
-                <div class="summary-item total">
-                    <span>Total:</span>
-                    <span>R$ 150,70</span>
+
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span>R$ 165,70</span>
                 </div>
-                <button class="checkout-btn">Finalizar Pedido</button>
+
+                <div class="form-group mt-lg">
+                    <label for="cupom" class="form-label">Cupom de desconto</label>
+                    <div class="flex" style="gap: var(--spacing-xs);">
+                        <input type="text" id="cupom" name="cupom" class="form-input" placeholder="Digite seu código">
+                        <button class="btn btn-secondary">Aplicar</button>
+                    </div>
+                </div>
+
+                <div class="mt-lg">
+                    <button class="btn btn-primary w-full btn-lg">Finalizar Pedido</button>
+                    <p class="text-sm text-light mt-sm">Tempo estimado de entrega: 30-45 minutos</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Suggested Items -->
+        <section class="mt-xl">
+            <h2 class="mb-lg">Você também pode gostar</h2>
+
+            <div class="grid"
+                style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--spacing-lg);">
+                <!-- Suggestion 1 -->
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+                        alt="Pizza Frango com Catupiry" class="card-img" style="height: 150px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: var(--font-size-lg);">Frango com Catupiry</h3>
+                        <div class="flex-between">
+                            <span class="card-price">R$ 52,90</span>
+                            <button class="btn btn-primary btn-sm add-suggestion">Adicionar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Suggestion 2 -->
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+                        alt="Pizza Calabresa" class="card-img" style="height: 150px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: var(--font-size-lg);">Calabresa</h3>
+                        <div class="flex-between">
+                            <span class="card-price">R$ 46,90</span>
+                            <button class="btn btn-primary btn-sm add-suggestion">Adicionar</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Suggestion 3 -->
+                <article class="card">
+                    <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
+                        alt="Pizza Quatro Queijos" class="card-img" style="height: 150px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: var(--font-size-lg);">Quatro Queijos</h3>
+                        <div class="flex-between">
+                            <span class="card-price">R$ 54,90</span>
+                            <button class="btn btn-primary btn-sm add-suggestion">Adicionar</button>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="contact-info">
-                <h3>Contato</h3>
-                <p>📞 (11) 99999-9999</p>
-                <p>📧 contato@mussarellos.com</p>
-                <p>📍 Rua das Pizzas, 123 - São Paulo, SP</p>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-heading">Mussarellos</h3>
+                    <p>A melhor experiência em pizzas artesanais na sua casa.</p>
+                    <div class="footer-social mt-lg">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua das Pizzas, 123</p>
+                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@mussarellos.com</p>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Horários</h3>
+                    <p>Segunda a Sexta: 18h - 23h</p>
+                    <p>Sábados e Domingos: 18h - 00h</p>
+                    <p>Feriados: 18h - 23h</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mussarellos Pizza. Todos os direitos reservados.</p>
+                <div>
+                    <a href="#" class="footer-link">Política de Privacidade</a>
+                    <a href="#" class="footer-link">Termos de Uso</a>
+                </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        mobileMenuToggle.addEventListener('click', function () {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Simple quantity buttons functionality
+        const qtyButtons = document.querySelectorAll('.qty-btn');
+
+        qtyButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const action = this.dataset.action;
+                const qtyElement = this.parentElement.querySelector('.qty-value');
+                let qty = parseInt(qtyElement.textContent);
+
+                if (action === 'increase') {
+                    qty++;
+                } else if (action === 'decrease' && qty > 1) {
+                    qty--;
+                }
+
+                qtyElement.textContent = qty;
+
+                // In a real application, this would update the cart and recalculate totals
+                // updateCart();
+            });
+        });
+
+        // Remove item buttons
+        const removeButtons = document.querySelectorAll('.remove-item');
+
+        removeButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // In a real application, this would remove the item from the cart
+                const row = this.closest('tr');
+                row.style.opacity = '0';
+                setTimeout(() => {
+                    row.remove();
+                    // updateCart();
+                }, 300);
+            });
+        });
+
+        // Add suggestion buttons
+        const addSuggestionButtons = document.querySelectorAll('.add-suggestion');
+
+        addSuggestionButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const card = this.closest('.card');
+                const title = card.querySelector('.card-title').textContent;
+
+                // Visual feedback
+                this.textContent = 'Adicionado!';
+                this.classList.add('btn-secondary');
+                this.classList.remove('btn-primary');
+
+                setTimeout(() => {
+                    this.textContent = 'Adicionar';
+                    this.classList.add('btn-primary');
+                    this.classList.remove('btn-secondary');
+                }, 2000);
+
+                // In a real application, this would add the item to the cart
+                // addToCart(title);
+            });
+        });
+    </script>
 </body>
 
 </html>

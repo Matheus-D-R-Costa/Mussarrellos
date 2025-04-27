@@ -1,0 +1,15 @@
+/* ===============================================
+   MUSARELLOS PIZZA - MAIN CSS (2025)
+   =============================================== */
+
+/* Importando os arquivos CSS modularizados */
+@import 'variables.css';
+@import 'reset.css';
+@import 'layout.css';
+@import 'typography.css';
+@import 'components.css';
+@import 'forms.css';
+@import 'sections.css';
+@import 'utilities.css';
+@import 'animations.css';
+@import 'responsive.css'; 

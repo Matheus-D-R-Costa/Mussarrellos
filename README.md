@@ -2,7 +2,9 @@
 
 ![Logotipo](https://via.placeholder.com/150x150.png?text=Mussarrellos)
 
-> Sistema completo para gerenciamento de pedidos de pizzaria, incluindo interface de cliente e administração.
+> Sistema completo para gerenciamento de pedidos de pizzaria, incluindo interface de cliente
+>
+> **NOTA:** Este projeto foi descontinuado por falta de tempo do desenvolvedor. Alguns módulos do backend e o frontend completo ainda não foram implementados, assim como a configuração do Nginx.
 
 ## 📋 Visão Geral
 
@@ -17,38 +19,37 @@ O projeto é estruturado em três componentes principais:
 Backend desenvolvido seguindo princípios de **Domain-Driven Design (DDD)** e **Clean Architecture**, proporcionando uma separação clara de responsabilidades e facilitando a evolução do sistema.
 
 **Principais características:**
-- Arquitetura hexagonal com camadas bem definidas
+- Programação reativa com Spring WebFlux
 - Implementação de padrões como Repository, Adapter e Value Objects
-- Programação reativa com Project Reactor
-- Eventos de domínio para comunicação entre contextos
 - Validação de regras de negócio explícitas
-- Outbox Pattern para garantir consistência entre dados e eventos
+- Conexão com banco de dados PostgreSQL via R2DBC
 
 **Organização em módulos:**
-- `modules/user`: Gerenciamento de usuários e autenticação
-- `modules/products`: Catálogo de produtos (pizzas e tamanhos)
-- `modules/orders`: Gerenciamento de pedidos
+- `modules/authentication`: Gerenciamento de autenticação
+- `modules/customer`: Gerenciamento de clientes
+- `modules/product`: Catálogo de produtos (pizzas e tamanhos)
+- `modules/checkout`: Gerenciamento de pedidos e pagamentos
+- `modules/cryptography`: Serviços de criptografia
 
-### 2. Frontend (JavaScript)
+### 2. Frontend (Não implementado completamente)
 
-Interface de usuário intuitiva para clientes realizarem pedidos e acompanharem seu status.
+Interface de usuário planejada para permitir que clientes realizem pedidos e acompanhem seu status.
 
-**Principais características:**
+**Estrutura planejada:**
+- Organização em diretórios funcionais (app, styles, static)
 - Design responsivo para funcionamento em dispositivos móveis e desktop
-- Framework moderno para construção de interfaces
-- Organização em módulos funcionais
-- Comunicação com API do backend
 
-### 3. Banco de Dados (PostgreSQL)
+### 3. Infraestrutura
 
-Banco de dados relacional estruturado em esquemas temáticos para melhor organização e manutenção.
+**Componentes configurados:**
+- PostgreSQL: Banco de dados principal
+- pgAdmin: Interface de administração do banco de dados
+- Configurações Docker para facilitar o desenvolvimento
 
-**Principais esquemas:**
-- `users`: Armazena informações de clientes e usuários
-- `products`: Catálogo de pizzas e tamanhos disponíveis
-- `orders`: Pedidos e itens de pedido
+**Componentes planejados mas não implementados:**
+- Nginx: Para servir o frontend e fazer proxy reverso para o backend
 
-## 🚀 Funcionalidades
+## 🚀 Funcionalidades Planejadas
 
 ### Para Clientes
 - Cadastro e autenticação
@@ -57,30 +58,27 @@ Banco de dados relacional estruturado em esquemas temáticos para melhor organiz
 - Acompanhamento do status do pedido
 - Histórico de pedidos anteriores
 
-### Para Administradores
-- Gerenciamento de catálogo de produtos
-- Visualização e processamento de pedidos
-- Relatórios de vendas
-- Gerenciamento de usuários
-
 ## 🛠️ Tecnologias Utilizadas
 
 ### Backend
-- **Java 17**
-- **Spring Boot 3.x**
+- **Java 23**
+- **Spring Boot 3.4.4**
 - **Spring WebFlux** (programação reativa)
 - **Spring Data R2DBC**
+- **Spring Security**
 - **MapStruct** para mapeamentos
-- **JWT** para autenticação
-
-### Frontend
-- **HTML5, CSS3, JavaScript**
-- **Fetch API** para comunicação com o backend
+- **Lombok** para redução de boilerplate
+- **Resilience4j** para implementação de circuit breakers
 
 ### Banco de Dados
-- **PostgreSQL 14+**
+- **PostgreSQL 15**
+- **pgAdmin 4** (interface de administração)
 
-## 📦 Estrutura do Projeto
+### DevOps
+- **Docker & Docker Compose**
+- **Vagrant** (para ambientes de desenvolvimento)
+
+## 📦 Estrutura Atual do Projeto
 
 ```
 mussarrellos/
@@ -90,47 +88,48 @@ mussarrellos/
 │   │       └── main/
 │   │           ├── java/com/mussarrellos/backend/
 │   │           │   ├── buildingblocks/      # Componentes base da arquitetura
-│   │           │   └── modules/            # Módulos do sistema
-│   │           │       ├── user/           # Módulo de usuários
-│   │           │       │   ├── api/        # Controladores REST
-│   │           │       │   ├── application/ # Casos de uso (commands/queries)
-│   │           │       │   ├── domain/     # Entidades, regras e eventos
-│   │           │       │   └── infra/      # Adaptadores e modelos de persistência
-│   │           │       ├── products/       # Módulo de produtos
-│   │           │       └── orders/         # Módulo de pedidos
+│   │           │   ├── modules/            # Módulos do sistema
+│   │           │   │   ├── authentication/  # Módulo de autenticação
+│   │           │   │   ├── customer/        # Módulo de clientes
+│   │           │   │   ├── product/         # Módulo de produtos
+│   │           │   │   ├── checkout/        # Módulo de checkout
+│   │           │   │   └── cryptography/    # Serviços de criptografia
+│   │           │   └── BackendApplication.java # Ponto de entrada da aplicação
 │   │           └── resources/
-│   ├── database/                  # Scripts e migrações de banco de dados
-│   └── frontend/                  # Código-fonte do frontend
-│       ├── app/
-│       │   ├── auth/              # Autenticação e gestão de usuários
-│       │   ├── checkout/          # Fluxo de checkout e pagamento
-│       │   └── utils/             # Utilidades comuns
+│   ├── docker-compose.yml         # Configuração Docker para ambiente de desenvolvimento
+│   └── frontend/                  # Estrutura inicial do frontend (incompleto)
+│       ├── app/                   # Lógica da aplicação
 │       ├── styles/                # Folhas de estilo CSS
 │       └── static/                # Recursos estáticos
-└── README.md                      # Este arquivo
+├── Vagrantfile                    # Configuração do Vagrant para desenvolvimento
+└── README.md                      # Documentação do projeto
 ```
 
 ## ⚙️ Configuração e Execução
 
 ### Pré-requisitos
-- Java 17+
-- PostgreSQL 14+
-- Node.js 18+ (para ferramentas de build do frontend)
+- Java 23
+- Docker e Docker Compose
+- PostgreSQL 15+ (ou usar a versão containerizada)
 
-### Banco de Dados
-1. Crie um banco de dados PostgreSQL
-2. Execute os scripts em `data/database/schemas.sql`
-
-### Backend
+### Configuração do Ambiente com Docker
 ```bash
-cd data/backend
-./mvnw spring-boot:run
+# Na raiz do projeto
+cd data
+# Crie um arquivo .env com as configurações necessárias
+# Exemplo:
+# DB_USER=mussarrellos
+# DB_PASSWORD=mussarrellos
+# DB_NAME=mussarrellos
+# PGADMIN_DEFAULT_EMAIL=admin@example.com
+# PGADMIN_DEFAULT_PASSWORD=admin
+docker-compose up -d
 ```
 
-### Frontend
+### Backend (Desenvolvimento)
 ```bash
-cd data/frontend
-# Servir os arquivos com seu servidor web preferido
+cd data/backend
+./gradlew bootRun
 ```
 
 ## 📝 Convenções e Padrões de Código
@@ -143,18 +142,22 @@ cd data/frontend
 
 ### Específicas
 - **Domain-Driven Design**: Entidades, Agregados, Value Objects, Serviços de Domínio
-- **Convenções de nomenclatura**: camelCase para Java, kebab-case para arquivos web
-- **Testes automatizados**: Unitários e de integração
+- **Arquitetura Modular**: Utilizando Spring Modulith para modularização
+- **Programação Reativa**: Utilizando WebFlux para operações não-bloqueantes
 - **Padronização de commits**: Mensagens descritivas seguindo padrões convencionais
 
-## 🔒 Segurança
+## 🔒 Segurança Planejada
 
-- Senhas criptografadas com BCrypt
-- Autenticação baseada em JWT
+- Autenticação com Spring Security
+- Proteção de endpoints
 - Validação de entrada em todas as operações
-- Proteção contra ataques CSRF e XSS
+- Criptografia para dados sensíveis
 
-## 👥 Contribuição
+## 👥 Status do Projeto e Contribuição
+
+Este projeto está atualmente **descontinuado** devido a restrições de tempo do desenvolvedor original. Vários módulos do backend e o frontend completo não foram implementados.
+
+Caso deseje continuar o desenvolvimento:
 
 1. Clone o repositório
 2. Crie um branch (`git checkout -b feature/nova-funcionalidade`)

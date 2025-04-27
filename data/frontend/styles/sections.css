@@ -1,0 +1,110 @@
+/* ===============================================
+   MUSARELLOS PIZZA - SECTIONS (2025)
+   =============================================== */
+
+/* ---- Hero Section ---- */
+.hero {
+    position: relative;
+    height: 500px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: var(--spacing-xl);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-xl);
+    opacity: 0.9;
+}
+
+/* ---- Pizza Cards Grid ---- */
+.pizza-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+}
+
+/* ---- Order Table ---- */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-xl) 0;
+}
+
+.order-table th {
+    text-align: left;
+    padding: var(--spacing-md);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.order-table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.order-summary {
+    background-color: var(--color-card);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    margin-top: var(--spacing-xl);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-sm) 0;
+}
+
+.summary-row.total {
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    padding-top: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+}
+
+/* ---- Auth Pages ---- */
+.auth-container {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl) var(--container-padding);
+}
+
+.auth-card {
+    background-color: var(--color-card);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    width: 100%;
+    max-width: 480px;
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.auth-footer {
+    margin-top: var(--spacing-xl);
+    text-align: center;
+} 
